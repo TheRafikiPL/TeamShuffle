@@ -71,39 +71,43 @@ namespace TeamShuffle
         //load players from txt file
         private void load_button_Click(object sender, EventArgs e)
         {
-            loadFileDialog.ShowDialog();
-            string fileName = loadFileDialog.FileName;
-            string readFile = File.ReadAllText(fileName);
-            string[] players = readFile.Split('\n');
-            team1_player1.Text = players[0];
-            team1_player2.Text = players[1];
-            team1_player3.Text = players[2];
-            team1_player4.Text = players[3];
-            team1_player5.Text = players[4];
-            team2_player1.Text = players[5];
-            team2_player2.Text = players[6];
-            team2_player3.Text = players[7];
-            team2_player4.Text = players[8];
-            team2_player5.Text = players[9];
+            if(loadFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = loadFileDialog.FileName;
+                string readFile = File.ReadAllText(fileName);
+                string[] players = readFile.Split('\n');
+                team1_player1.Text = players[0];
+                team1_player2.Text = players[1];
+                team1_player3.Text = players[2];
+                team1_player4.Text = players[3];
+                team1_player5.Text = players[4];
+                team2_player1.Text = players[5];
+                team2_player2.Text = players[6];
+                team2_player3.Text = players[7];
+                team2_player4.Text = players[8];
+                team2_player5.Text = players[9];
+            }
         }
 
         //save players to txt file
         private void save_button_Click(object sender, EventArgs e)
         {
-            saveFileDialog.ShowDialog();
-            string path = saveFileDialog.FileName;
-            string players = "";
-            players += team1_player1.Text + '\n';
-            players += team1_player2.Text + '\n';
-            players += team1_player3.Text + '\n';
-            players += team1_player4.Text + '\n';
-            players += team1_player5.Text + '\n';
-            players += team2_player1.Text + '\n';
-            players += team2_player2.Text + '\n';
-            players += team2_player3.Text + '\n';
-            players += team2_player4.Text + '\n';
-            players += team2_player5.Text;
-            File.WriteAllText(path, players);
+            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string path = saveFileDialog.FileName;
+                string players = "";
+                players += team1_player1.Text + '\n';
+                players += team1_player2.Text + '\n';
+                players += team1_player3.Text + '\n';
+                players += team1_player4.Text + '\n';
+                players += team1_player5.Text + '\n';
+                players += team2_player1.Text + '\n';
+                players += team2_player2.Text + '\n';
+                players += team2_player3.Text + '\n';
+                players += team2_player4.Text + '\n';
+                players += team2_player5.Text;
+                File.WriteAllText(path, players);
+            }
         }
     }
 }
